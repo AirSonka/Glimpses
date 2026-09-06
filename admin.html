@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Portfolio</title>
+<style>
+  :root {
+    --bg: #15130f; --paper: #ede8de; --paper-dim: #8f897a;
+    --line: #2c291f; --accent: #c85a2e; --bg-raised: #1c1a15;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--paper);
+    font-family: ui-monospace, Menlo, monospace; font-size: 13px;
+    padding: 24px; max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: 1.1rem; font-weight: 500; }
+  h2 { font-size: 0.95rem; font-weight: 500; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 20px; }
+  p.hint { color: var(--paper-dim); line-height: 1.6; }
+  label { display: block; margin: 12px 0 4px; color: var(--paper-dim); }
+  input[type=text], textarea {
+    width: 100%; background: var(--bg-raised); border: 1px solid var(--line);
+    color: var(--paper); padding: 8px; font-family: inherit; font-size: 13px; border-radius: 2px;
+  }
+  textarea { min-height: 50px; resize: vertical; }
+  button {
+    background: var(--accent); color: #15130f; border: none; padding: 8px 14px;
+    font-family: inherit; font-size: 13px; cursor: pointer; border-radius: 2px; margin-top: 10px;
+  }
+  button.secondary { background: transparent; color: var(--paper); border: 1px solid var(--line); }
+  button.small { padding: 4px 8px; font-size: 12px; }
+  .photo-row {
+    border: 1px solid var(--line); padding: 14px; margin-bottom: 10px; border-radius: 2px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .photo-row .full { grid-column: 1 / -1; }
+  .photo-row .row-actions { display: flex; justify-content: space-between; align-items: center; }
+  #fileInput { margin-top: 10px; }
+  #output {
+    width: 100%; min-height: 300px; background: var(--bg-raised); color: var(--paper);
+    border: 1px solid var(--line); font-family: inherit; font-size: 12px; padding: 10px;
+  }
+  .site-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+</style>
+</head>
+<body>
+
+<h1>Portfolio Admin</h1>
+<p class="hint">
+  A local tool for editing your site's content — nothing here is uploaded anywhere.
+  1) Load your current <code>photos.js</code>. 2) Edit, add, or remove photos below.
+  3) Download the new <code>photos.js</code> and replace the old one in your project folder.
+  Image files themselves still need to be copied into the <code>images/</code> folder by hand —
+  browsers aren't allowed to write files to your project for you.
+</p>
+
+<h2>1. Load existing data</h2>
+<input type="file" id="fileInput" accept=".js">
+<p class="hint">Select the <code>photos.js</code> file from your project folder.</p>
+
+<h2>2. Site details</h2>
+<div class="site-fields">
+  <div>
+    <label>Site title</label>
+    <input type="text" id="siteTitle">
+  </div>
+  <div>
+    <label>Tagline</label>
+    <input type="text" id="siteTagline">
+  </div>
+  <div class="full">
+    <label>About text</label>
+    <textarea id="siteAbout"></textarea>
+  </div>
+  <div>
+    <label>Contact email</label>
+    <input type="text" id="siteContact">
+  </div>
+  <div>
+    <label>Instagram URL</label>
+    <input type="text" id="siteInstagram">
+  </div>
+  <div class="full">
+    <label>Default collection (shown on homepage)</label>
+    <input type="text" id="defaultCollection">
+  </div>
+</div>
+
+<h2>3. Photographs</h2>
+<div id="photoList"></div>
+<button id="addPhoto" class="secondary">+ Add a photograph</button>
+
+<h2>4. Export</h2>
+<p class="hint">Copy the box below into <code>photos.js</code>, or download it directly.</p>
+<button id="generate">Generate photos.js</button>
+<button id="download" class="secondary">Download photos.js</button>
+<textarea id="output" readonly></textarea>
+
+<script src="admin.js"></script>
+</body>
+</html>

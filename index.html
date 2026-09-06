@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#" class="site-name" id="siteName">Portfolio</a>
+  <nav class="collections" id="collectionNav" aria-label="Collections"></nav>
+  <button class="about-toggle" id="aboutToggle" aria-haspopup="dialog" aria-expanded="false">About</button>
+</header>
+
+<main>
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <p class="empty-note" id="emptyNote" hidden>No photographs in this collection yet.</p>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photograph">&larr;</button>
+  <div class="lb-stage">
+    <img id="lbImage" src="" alt="">
+    <div class="lb-caption">
+      <span class="lb-frame" id="lbFrame"></span>
+      <span class="lb-name" id="lbName"></span>
+      <span class="lb-text" id="lbText"></span>
+    </div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next photograph">&rarr;</button>
+</div>
+
+<!-- About / contact panel -->
+<div class="about-panel" id="aboutPanel" hidden role="dialog" aria-modal="true" aria-label="About">
+  <button class="about-close" id="aboutClose" aria-label="Close">&times;</button>
+  <div class="about-content">
+    <h2 id="aboutTitle"></h2>
+    <p id="aboutText"></p>
+    <p class="about-contact">
+      <a id="aboutEmail" href="#"></a>
+      <a id="aboutInstagram" href="#" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </div>
+</div>
+
+<script src="photos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
