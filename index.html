@@ -1,56 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photography Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef">
+  <meta name="description" content="AirSonka photography portfolio">
+  <title>AirSonka</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<header class="topbar">
-  <a href="#" class="site-name" id="siteName">Portfolio</a>
-  <nav class="collections" id="collectionNav" aria-label="Collections"></nav>
-  <button class="about-toggle" id="aboutToggle" aria-haspopup="dialog" aria-expanded="false">About</button>
+<header class="site-header">
+  <a class="brand-lockup" href="#selected" aria-label="AirSonka home">
+    <span class="brand">AirSonka</span>
+    <span class="brand-tagline" id="brandTagline">Photos for a softer world.</span>
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation">Menu</button>
+  <nav class="nav" aria-label="Main navigation">
+    <a data-route="selected" href="#selected">Selected</a>
+    <a data-route="collections" href="#collections">Collections</a>
+    <a data-route="all" href="#all">All Photos</a>
+    <a data-route="about" href="#about">About</a>
+    <a data-route="contact" href="#contact">Contact</a>
+  </nav>
 </header>
-
-<main>
-  <div class="grid" id="grid" aria-live="polite"></div>
-  <p class="empty-note" id="emptyNote" hidden>No photographs in this collection yet.</p>
-</main>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photograph viewer">
-  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photograph">&larr;</button>
-  <div class="lb-stage">
-    <img id="lbImage" src="" alt="">
-    <div class="lb-caption">
-      <span class="lb-frame" id="lbFrame"></span>
-      <span class="lb-name" id="lbName"></span>
-      <span class="lb-text" id="lbText"></span>
-    </div>
+<main id="app" class="app"><div class="loading">Loading AirSonka…</div></main>
+<footer class="site-footer"><span id="footerText">© AirSonka</span></footer>
+<dialog id="lightbox" class="lightbox">
+  <button class="lightbox-close" type="button" aria-label="Close">×</button>
+  <button class="lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-media"><img id="lightboxImage" alt=""></div>
+    <aside class="lightbox-info" id="lightboxInfo"></aside>
   </div>
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Next photograph">&rarr;</button>
-</div>
-
-<!-- About / contact panel -->
-<div class="about-panel" id="aboutPanel" hidden role="dialog" aria-modal="true" aria-label="About">
-  <button class="about-close" id="aboutClose" aria-label="Close">&times;</button>
-  <div class="about-content">
-    <h2 id="aboutTitle"></h2>
-    <p id="aboutText"></p>
-    <p class="about-contact">
-      <a id="aboutEmail" href="#"></a>
-      <a id="aboutInstagram" href="#" target="_blank" rel="noopener">Instagram</a>
-    </p>
-  </div>
-</div>
-
-<script src="photos.js"></script>
-<script src="script.js"></script>
+  <button class="lightbox-next" type="button" aria-label="Next photo">›</button>
+</dialog>
+<script src="data/site.js"></script>
+<script src="data/photos.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

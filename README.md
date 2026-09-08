@@ -1,71 +1,59 @@
-# Photography Portfolio
+# AirSonka Portfolio V4
 
-A static, full-bleed grid photo portfolio. No build tools, no dependencies — just HTML, CSS and JS.
+This version follows the calmer landing-page structure:
 
-## Files
+1. Sticky navigation at the top
+2. One large hero photograph
+3. A single horizontal Selected strip with equal-height photographs
+4. Four randomly chosen Collections, each with one cover photograph
 
-```
-index.html    the site
-style.css     all styling
-script.js     grid, collection filtering, lightbox, about panel
-photos.js     your content — edit this to add photos and text
-admin.html    a browser tool for editing photos.js without touching code
-admin.js      logic for admin.html
-images/       your photo files go here
-```
+## Landing page behaviour
 
-## Adding photos
+- The hero and Selected strip change on reload.
+- Selected photographs are chosen from photos marked `Selected` and are still biased toward a visually coherent group.
+- The Selected strip is deliberately level and calm: all thumbnails share one height.
+- If a photo has a title, it appears only on hover on desktop.
+- The four collection cards are picked randomly from your assigned Collections each time the landing page loads.
+- If you have fewer than four Collections, all available Collections are shown.
+- All Photos and individual Collection pages remain newest-first.
 
-**Option A — by hand**
-1. Copy your image files into `images/`.
-2. Open `photos.js` and add an entry to the `PHOTOS` array for each one:
-   ```js
-   {
-     file: "images/your-photo.jpg",
-     name: "Photo Title",
-     text: "Optional short caption.",
-     collections: ["Selected Photographs", "Landscapes"]
-   }
-   ```
-3. New photos should go at the **top** of the array — the site shows them in the order they appear.
+## Editing content
 
-**Option B — with the admin tool**
-1. Open `admin.html` in your browser (just double-click the file).
-2. Click "Load existing data" and select your current `photos.js`.
-3. Edit, add, or remove photos using the form.
-4. Click "Download photos.js" and replace the old file in your project folder.
-5. You still need to manually copy any new image files into `images/` — browsers can't do that step for you.
+Open `editor.html` to edit:
+- Title
+- Description
+- Location
+- Year
+- Collections
+- Selected yes/no
+- About and contact details
 
-## Collections
+For GitHub Pages, upload the complete contents of this folder to the repository root.
 
-- A photo can belong to more than one collection — just list them comma-separated (admin tool) or as an array (by hand).
-- The homepage shows whichever collection is set as `DEFAULT_COLLECTION` at the top of `photos.js` (currently **"Selected Photographs"**).
-- Every unique collection name you use across your photos automatically becomes a tab in the top navigation, plus an "All Photographs" tab.
 
-## Site text
+## V5 layout update
+- Lower, quieter sticky header.
+- Selected band now uses a two-row editorial composition: one portrait sets the visual height, with 3 images above and 4 below.
+- The portrait and companion photographs are still chosen from Selected and coordinated visually on each reload.
 
-Edit the `SITE` object at the top of `photos.js` (or use the admin tool) to change the site title, tagline, about text, and contact details.
+### Landing page portrait crop
+The tall image in the Selected band no longer requires a portrait-oriented source photo.
+AirSonka now chooses a visually compatible Selected image from the wider pool and crops it
+only for the tall landing-page slot using CSS `object-fit: cover`. The original image file
+is never altered, and the full photograph remains visible in the lightbox/detail view.
 
-## Publishing with GitHub Pages (free hosting)
+### V7 visual refinements
+- AirSonka and the landing-page section headings now use the same clean sans-serif family as the navigation.
+- Selected photographs and Collections are intentionally smaller than the AirSonka wordmark.
+- The hero image now carries a quiet editable text element on the left. Edit it in `editor.html` under “Hero image text”.
 
-1. Create a new repository on [github.com](https://github.com), e.g. `my-portfolio`.
-2. Upload all these files (keeping the `images/` folder structure) to the repository — either drag-and-drop on github.com, or via git:
-   ```
-   git init
-   git add .
-   git commit -m "First version of site"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/my-portfolio.git
-   git push -u origin main
-   ```
-3. In the repository, go to **Settings → Pages**.
-4. Under "Build and deployment", set **Source** to "Deploy from a branch", branch `main`, folder `/ (root)`.
-5. Save. Your site will be live within a minute or two at:
-   ```
-   https://YOUR-USERNAME.github.io/my-portfolio/
-   ```
-6. Any time you push changes (new photos, edited `photos.js`), the live site updates automatically.
 
-## Notes on image size
+### V8 header / hero treatment
+The landing-page tagline is no longer placed over the changing hero photograph.
+It now sits directly below **AirSonka** in the sticky header. This keeps the hero image
+completely unobstructed and guarantees consistent readability regardless of the selected photo.
 
-For 100+ photos, keep individual image files reasonably small (around 1500–2000px on the long edge, exported at good-but-not-maximum JPEG quality) so the grid loads quickly. Full-resolution originals aren't needed for web display.
+You can edit the tagline in `editor.html` under **Tagline below AirSonka**.
+
+### V9 typography
+The landing-page headings **SELECTED PHOTOGRAPHS** and **COLLECTIONS** are now set in uppercase with slightly increased letter spacing.
